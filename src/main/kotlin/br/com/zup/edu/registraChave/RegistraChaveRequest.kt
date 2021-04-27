@@ -10,7 +10,7 @@ import javax.validation.constraints.Size
 
 
 @Introspected
-data class RegistraChaveRequest(
+class RegistraChaveRequest(
     val clienteId: String,
     @field:NotNull
     val tipoChave: TipoChave,
@@ -29,6 +29,7 @@ data class RegistraChaveRequest(
 
     }
 
+}
 
     enum class TipoChaveRequest(val atributoGrpc: TipoChave) {
         CPF(TipoChave.CPF) {
@@ -51,7 +52,7 @@ data class RegistraChaveRequest(
         },
 
         EMAIL(TipoChave.EMAIL) {
-             override fun valida(chave: String?): Boolean {
+            override fun valida(chave: String?): Boolean {
                 if (chave.isNullOrBlank()) {
                     return false
                 }
@@ -66,9 +67,10 @@ data class RegistraChaveRequest(
             override fun valida(chave: String?) =
                 chave.isNullOrBlank() // chave aleatória não deve ser preenchida pois é criada automaticamente
         };
-
-        abstract fun valida(chave: String?): Boolean
+        open abstract fun valida(chave: String?): Boolean
     }
 
 
-}
+
+
+
