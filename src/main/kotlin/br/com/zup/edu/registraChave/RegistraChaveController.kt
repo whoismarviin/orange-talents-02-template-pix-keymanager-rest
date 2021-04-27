@@ -1,4 +1,4 @@
-package br.com.zup.edu.RegistraChave
+package br.com.zup.edu.registraChave
 
 import br.com.zup.edu.CriaChavePixServiceGrpc
 import io.micronaut.http.HttpResponse
@@ -12,7 +12,7 @@ import javax.validation.Valid
 
 @Validated
 @Controller("/api/v1/clientes/{cliente_id}")
-class RegistraChaveController(
+open class RegistraChaveController(
     @Inject val grpcClient: CriaChavePixServiceGrpc.CriaChavePixServiceBlockingStub
 ) {
 

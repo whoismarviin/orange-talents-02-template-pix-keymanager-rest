@@ -1,4 +1,4 @@
-package br.com.zup.edu.RegistraChave
+package br.com.zup.edu.registraChave
 
 class RegistraChaveResponse(
     val clienteId: String,
