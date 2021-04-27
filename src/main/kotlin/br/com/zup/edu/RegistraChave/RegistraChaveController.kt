@@ -11,13 +11,13 @@ import javax.validation.Valid
 
 
 @Validated
-@Controller("/api/chaves")
+@Controller("/api/v1/clientes/{cliente_id}")
 class RegistraChaveController(
     @Inject val grpcClient: CriaChavePixServiceGrpc.CriaChavePixServiceBlockingStub
 ) {
 
-    @Post
-    fun registra(@Valid @Body form: RegistraChaveRequest): HttpResponse<Any> {
+    @Post("/pix")
+    fun registraChave(@Valid @Body form: RegistraChaveRequest): HttpResponse<Any> {
 
         val request = form.toModel();
 

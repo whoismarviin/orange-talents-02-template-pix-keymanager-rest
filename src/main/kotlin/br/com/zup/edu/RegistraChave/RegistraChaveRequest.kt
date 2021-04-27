@@ -9,7 +9,7 @@ import javax.validation.constraints.Size
 
 
 @Introspected
-class RegistraChaveRequest(
+data class RegistraChaveRequest(
     val clienteId: String,
     @field:NotNull
     val tipoChave: TipoChave,
@@ -27,4 +27,19 @@ class RegistraChaveRequest(
             .build()
 
     }
+
+
+    enum class TipoChaveRequest(val atributoGrpc: TipoChave) {
+        CPF(TipoChave.CPF) {
+            fun valida(chave: String?): Boolean {
+                if (chave.isNullOrBlank()) {
+                    return false
+                }
+
+                return chave.matches("^\\+[1-9] [0-9]\\d{1,14}$".toRegex())
+            }
+        }
+    }
+
+
 }
